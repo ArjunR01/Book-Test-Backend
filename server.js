@@ -13,6 +13,10 @@ const expressLayouts = require('express-ejs-layouts')
 // importing the route path by which is index.js inside the routes which render the index.ejs or layout.ejs
 const indexRouter = require('./routes/index')
 
+const bookRouter = require('./routes/books')
+
+
+// Created seperate route for the author related things
 const authorRouter = require('./routes/authors')
 
 
@@ -40,12 +44,20 @@ app.use(expressLayouts)
 // public for the css or any other files
 app.use(express.static('public'))
 
+
+// using the body parser installed using the npm i body-parser to get the input body text using the <name>
 app.use(bodyParser.urlencoded({limit: '10mb', extended: false}))
 
 
 // starting path render from the index.js inside the route folder
 app.use('/',indexRouter)
+
+//using the authors router
 app.use('/authors',authorRouter)
+
+
+app.use('/books',bookRouter)
+
 
 
 // providing the port number to run in the localhost.
