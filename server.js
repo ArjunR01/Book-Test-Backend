@@ -13,8 +13,14 @@ const expressLayouts = require('express-ejs-layouts')
 // importing the route path by which is index.js inside the routes which render the index.ejs or layout.ejs
 const indexRouter = require('./routes/index')
 
+const authorRouter = require('./routes/authors')
+
+
+// const bodyParser = require('body-parser')
+
 // connection with the local mongoDB
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
 mongoose.connect(process.env.DATABASE_URL, {
   useNewUrlParser: true
 })
@@ -34,8 +40,13 @@ app.use(expressLayouts)
 // public for the css or any other files
 app.use(express.static('public'))
 
+app.use(bodyParser.urlencoded({limit: '10mb', extended: false}))
+
+
 // starting path render from the index.js inside the route folder
 app.use('/',indexRouter)
+app.use('/authors',authorRouter)
+
 
 // providing the port number to run in the localhost.
 app.listen(process.env.PORT || 3000)

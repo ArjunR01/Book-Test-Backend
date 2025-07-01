@@ -6,10 +6,15 @@
   <title>My Library</title>
 </head>
 <body>
-  Before
+  <!-- Before
+  <br> -->
+  <%- include('../partials/header.ejs') %>
+  <% if(typeof errorMessage !== 'undefined'){ %>
+    <%- include('../partials/errorMessage.ejs') %>
+    <% } %>
   <br>
   <%- body %>
   <br>
-  After
+  <!-- After -->
 </body>
 </html>
