@@ -1,6 +1,6 @@
 <div>
   <label>Title</label>
-  <input type="text" name="name" value="<%= book.title %>">
+  <input type="text" name="title" value="<%= book.title %>">
 </div>
 
 <div>
@@ -9,9 +9,9 @@
     <% authors.forEach(author => { %>
       <% if (author.id === book.author) {%>
         <option selected label="<%= author.name %>" value="<%= author.id %>">
-      <% } else{ %>
-          <option selected label="<%= author.name %>" value="<%= author.id %>">
-        <% } %>
+      <!-- <% } else{ %>
+          <option unselected label="<%= author.name %>" value="<%= author.id %>">
+        <% } %> -->
       <% }) %>
   </select>
 </div>

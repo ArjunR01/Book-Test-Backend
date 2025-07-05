@@ -8,6 +8,8 @@ const express = require('express')
 // creating the var for using the express
 const app = express()
 
+const methodOverride = require('method-override')
+
 // use layout formats inside the layouts folder so importing this one also.
 const expressLayouts = require('express-ejs-layouts')
 // importing the route path by which is index.js inside the routes which render the index.ejs or layout.ejs
@@ -43,6 +45,8 @@ app.set('layout', 'layouts/layout')
 app.use(expressLayouts)
 // public for the css or any other files
 app.use(express.static('public'))
+
+app.use(methodOverride('_method'))
 
 
 // using the body parser installed using the npm i body-parser to get the input body text using the <name>
